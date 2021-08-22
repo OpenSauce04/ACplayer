@@ -24,8 +24,8 @@ async function start() {
   music.play();
 
   for(;;) {
-    phour = hour; // Previous hour
-    hour = new Date().getHours();
+    //phour = hour; // Previous hour
+    //hour = new Date().getHours();
     console.log("h:"+hour+" | ph:"+phour);
     if (hour!=phour) {
       while (vol>=0) { // Fadeout (vol must be a multiple of 0.05)
@@ -33,7 +33,7 @@ async function start() {
         music.volume = Math.max(vol,0);
         await sleep(interval);
       }
-      await sleep(3000);
+      await sleep(2500);
       music.pause();
       bell.play();
       await sleep(Math.ceil(bell.duration*1000)); // Wait until bell has stopped playing
