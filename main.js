@@ -6,7 +6,7 @@ function sleep(ms) {
 
 musicPath = '';
 var music = new Audio(musicPath);
-
+var bell = new Audio('resources/music/bell.mp3');
 function parseHour(_hour) {
   if (_hour>12) {
     _hour-=12
@@ -17,12 +17,12 @@ function parseHour(_hour) {
 }
 async function start() {
   hour = new Date().getHours();
-  _hour = hour
+  phour = hour
   musicPath = 'resources/music/nl/'+parseHour(hour)+'.mp3';
   music = new Audio(musicPath);
   music.loop = true;
   music.play();
-  
+
   for(;;) {
     phour = hour; // Previous hour
     hour = new Date().getHours();
@@ -35,6 +35,9 @@ async function start() {
       }
       await sleep(3000);
       music.pause();
+      bell.play();
+      await sleep(Math.ceil(bell.duration*1000)); // Wait until bell has stopped playing
+      await sleep(1500);
       vol = 1;
       musicPath = 'resources/music/nl/'+parseHour(hour)+'.mp3';
       music = new Audio(musicPath);
