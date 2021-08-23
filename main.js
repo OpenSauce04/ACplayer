@@ -21,6 +21,7 @@ async function start(soundtrack) {
   musicPath = 'resources/music/'+soundtrack+'/'+parseHour(hour)+'.mp3';
   music = new Audio(musicPath);
   music.loop = true;
+  music.autoplay = true;
   music.play();
 
   for(;;) {
@@ -42,6 +43,7 @@ async function start(soundtrack) {
       musicPath = 'resources/music/'+soundtrack+'/'+parseHour(hour)+'.mp3';
       music = new Audio(musicPath);
       music.loop = true;
+      music.autoplay = true;
       music.play();
       
     }
