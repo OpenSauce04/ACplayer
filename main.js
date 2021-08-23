@@ -15,10 +15,10 @@ function parseHour(_hour) {
     return String(_hour)+"am";
   }
 }
-async function start() {
+async function start(soundtrack) {
   hour = new Date().getHours();
   phour = hour
-  musicPath = 'resources/music/nl/'+parseHour(hour)+'.mp3';
+  musicPath = 'resources/music/'+soundtrack+'/'+parseHour(hour)+'.mp3';
   music = new Audio(musicPath);
   music.loop = true;
   music.play();
@@ -39,7 +39,7 @@ async function start() {
       await sleep(Math.ceil(bell.duration*1000)); // Wait until bell has stopped playing
       await sleep(1500);
       vol = 1;
-      musicPath = 'resources/music/nl/'+parseHour(hour)+'.mp3';
+      musicPath = 'resources/music/'+soundtrack+'/'+parseHour(hour)+'.mp3';
       music = new Audio(musicPath);
       music.loop = true;
       music.play();
